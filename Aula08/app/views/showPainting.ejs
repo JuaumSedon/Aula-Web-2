@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    
+    <title><%= painting.nome %></title>
+</head>
+<body>
+
+    <h1><%= painting.nome %></h1>
+    <h2>Artista: <%= painting.artista %> (<%= painting.ano %>)</h2>
+    
+    <div style="margin-top: 20px;">
+        <img src="<%= painting.urlimagem %>" alt="<%= painting.nome %>" style="max-width: 600px; border-radius: 8px;">
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <h3>Comentários:</h3>
+        <p>
+            <%= painting.comentarios || 'Nenhum comentário ainda.' %>
+        </p>
+    </div>
+    
+    <br>
+    <a href="/">Voltar para a galeria</a>
+
+</body>
+</html>

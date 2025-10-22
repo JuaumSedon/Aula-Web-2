@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Formulário de Inclusão de Obra de Arte</title>
+	<link rel="stylesheet" type="text/css" href="/styles/insertPainting.css" />
+	<link rel="stylesheet" type="text/css" href="/styles/menu.css" />
+
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="menu-container">
+			<div class="menu-options">
+				<a href="http://localhost:3000/" class="menu-item active">Home</a>
+				<a href="http://localhost:3000/inserirobra" class="menu-item">Incluir Obra</a>
+			</div>
+		</div>
+		<h1>Formulário para inclusão de obra de arte</h1>
+		<section class="errors">
+			<% if(errors) { %>
+				<ul>
+					<% for(let i=0; i < errors.length; i++){ %>
+						<li>
+							<%= errors[i].message %>
+						</li>
+						<% } %>
+				</ul>
+				<% } %>
+		</section>
+		<form class="form" action="/obra/salvar" method="post">
+			<input type="text" name="nome" placeholder="Digite o nome da obra" value="<%= painting.nome %>">
+			<input type="number" name="ano" placeholder="Digite o ano da obra" value="<%= painting.ano %>">
+			<input type="text" name="artista" placeholder="Digite o nome da autora ou autor da obra"
+				value="<%= painting.artista %>">
+			<input type="text" name="urlimagem" placeholder="Digite a url da foto da imagem"
+				value="<%= painting.urlimagem %>">
+			<button type="submit" value="enviar">Enviar</button>
+		</form>
+	</div>
+
+</body>
+
+</html>

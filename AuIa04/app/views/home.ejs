@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <h1>Rota principal</h1>
+    <input type="text" name="comnetario" id="comentario">
+    <div class="paintings-container">
+        <% for (const pintura of paintings) { %>
+        <div class="card">
+            <div class="card-image-container">
+                <img src="<%= pintura.urlimagem %>" class="card-image" alt="<%= pintura.nome %>"/>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><%= pintura.nome %></h5>
+                <p class="card-text"><%= pintura.artista %></p>
+                <form action="/enviar comentario" method="get">
+                    <input type="text" name="comnetario" id="comentario">
+                </form>
+            </div>
+        </div>
+        <% }; %> </div>
+    
+</body>
+</html>
