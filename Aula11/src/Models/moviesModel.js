@@ -14,8 +14,22 @@
     }
 
 
+    const getMovie = async(id)=>{
+
+        console.log("GetModel pelo id");
+        const db = await connectDB();
+
+        const numeroId = parseInt(id);
+
+        const movie = await db.collection('movies').findOne({id: numeroId});
+
+        return movie;
+    }
+
+
     module.exports = {
 
-        getMovies
+        getMovies,
+        getMovie
 
     }
