@@ -59,7 +59,6 @@ module.exports.enviarcomentario = (req, res) => {
     })
 
 };
-
 module.exports.addPainting = async (req, res) => {
 
     const dadosObra = req.body

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <title>Formulário de Atualização de Obra de Arte</title>
+    </head>
+<body>
+    <div class="container">
+        <h1>Atualizar uma Obra de Arte</h1>
+
+        <% if(errors && errors.length > 0) { %>
+            <ul class="errors">
+                <% for(let i=0; i < errors.length; i++){ %>
+                    <li><%= errors[i].message %></li>
+                <% } %>
+            </ul>
+        <% } %>
+        
+        <form class="form" action="/atualizar-pintura" method="post">
+            <input type="text" name="nome" placeholder="Digite o novo nome da obra" value="<%= painting.nome || '' %>">
+            <input type="number" name="ano" placeholder="Digite o novo ano da obra" value="<%= painting.ano || '' %>">
+            <input type="text" name="artista" placeholder="Digite o novo nome do artista" value="<%= painting.artista || '' %>">
+            <input type="text" name="urlimagem" placeholder="Digite a nova URL da imagem" value="<%= painting.urlimagem || '' %>">
+            
+            <input type="number" name="id" placeholder="Digite o ID da pintura a ser atualizada" value="<%= painting.id || '' %>" required>
+            
+            <button type="submit">Atualizar</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -51,21 +51,21 @@ module.exports = {
 
         app.get('/atualizar-pintura', (req, res) => {
 
-            res.render('updatePainting.ejs',{ errors: [], painting: {} })
+            res.render('updatePainting.ejs', { errors: [], painting: {} })
         });
 
 
-        app.post('/atualizar-pintura', (req,res)=>{
+        app.post('/atualizar-pintura', (req, res) => {
 
-            const {error} = homeModel.schemas.atualizarObra.validate(req.body)
+            const { error } = homeModel.schemas.atualizarObra.validate(req.body)
 
 
-            if(!error){
+            if (!error) {
 
-                homeController.atualizarPintura(req,res)
+                homeController.atualizarPintura(req, res)
 
-            }else{
-                return res.render('updatePainting.ejs',{errors:error.details , painting: req.body})
+            } else {
+                return res.render('updatePainting.ejs', { errors: error.details, painting: req.body })
             }
         })
 
