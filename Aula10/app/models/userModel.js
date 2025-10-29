@@ -28,13 +28,21 @@ module.exports = {
 
     },
 
-    addUser: (db, dados, callback) => {
-
+addUser: (db, dados, callback) => {
         const sql = 'INSERT INTO users (email,password) VALUES (?,?)';
-        const info = [dados.email, dados.senha];
-
+        const info = [dados.email, dados.passwordHash]; 
         db.query(sql, info, callback);
+    },
 
+    findUserByEmail: (db, email, callback) => {
+        const sql = 'SELECT * FROM users WHERE email = ? LIMIT 1';
+        db.query(sql, [email], (err, results) => {
+            if (err) {
+                return callback(err, null);
+            }
+          
+            return callback(null, results[0]); 
+        });
     }
 
 }

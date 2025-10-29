@@ -1,20 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
-    <title>Document</title>
+    <title>Museu Virtual</title>
 </head>
 
 <body>
+
+    <header>
+        <nav>
+            </nav>
+        <div class="user-info" style="text-align: right; padding: 10px; border-bottom: 1px solid #ccc; margin-bottom: 20px;">
+            <% if (user) { %>
+                <span>Olá, <%= user.email %>!</span>
+                <a href="/logout" style="margin-left: 15px;">Sair</a>
+            <% } else { %>
+                <a href="/login">Login</a>
+                <a href="/registrar" style="margin-left: 15px;">Registrar</a>
+            <% } %>
+        </div>
+    </header>
 
 
     <h1>Rota principal</h1>
     <a href="/inserirPintura">Inserir pintura</a>
     <a href="/atualizar-pintura">Atualizar pintura</a>
-    <a href="/user/inserir">Inserir Usuario</a>
     <div class="paintings-container">
         <% for (const pintura of paintings) { %>
             <div class="card">
@@ -22,9 +35,11 @@
                     <img src="<%= pintura.urlimagem %>" class="card-image" alt="<%= pintura.nome %>" />
                 </div>
                 <div class="card-body">
-                    <a href="/obradearte?idobra=<%=pintura.id %>"><h5 class="card-title">
-                        <%= pintura.nome %>
-                    </h5></a>
+                    <a href="/obradearte?idobra=<%=pintura.id %>">
+                        <h5 class="card-title">
+                            <%= pintura.nome %>
+                        </h5>
+                    </a>
                     <p class="card-text">
                         <%= pintura.artista %>
                     </p>

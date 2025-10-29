@@ -1,41 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-	<meta charset="utf-8" />
-	<title>Formulário de Inclusão de Obra de Arte</title>
-	<link rel="stylesheet" type="text/css" href="/styles/insertPainting.css" />
-	<link rel="stylesheet" type="text/css" href="/styles/menu.css" />
-
-
+    <meta charset="utf-8" />
+    <title>Formulário de Inclusão de Usuário</title> <link rel="stylesheet" type="text/css" href="/styles/insertPainting.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/menu.css" />
 </head>
-
 <body>
-	<div class="container">
-		<div class="menu-container">
-			<div class="menu-options">
-				<a href="http://localhost:3000/" class="menu-item active">Home</a>
-			</div>
-		</div>
-		<h1>Formulário para inclusão de obra de arte</h1>
-		<section class="errors">
-			<% if(errors) { %>
-				<ul>
-					<% for(let i=0; i < errors.length; i++){ %>
-						<li>
-							<%= errors[i].message %>
-						</li>
-						<% } %>
-				</ul>
-				<% } %>
-		</section>
-		<form class="form" action="/user/inserir" method="post">
-			<input type="text" name="email" placeholder="Digite o seu email" value="<%= user.email %>">
-			<input type="text" name="senha" placeholder="Digite a sua senha" value="<%= user.senha %>">
-			<button type="submit" value="enviar">Enviar</button>
-		</form>
-	</div>
-
+    <div class="container">
+        <div class="menu-container">
+            <div class="menu-options">
+                <a href="http://localhost:3000/" class="menu-item active">Home</a>
+            </div>
+        </div>
+        <h1>Formulário para inclusão de usuário</h1> <section class="errors">
+            <% if(typeof errors !== 'undefined' && errors.length > 0) { %> <ul style="color: red;">
+                    <% errors.forEach(function(error) { %>
+                        <li><%= error.msg %></li> <% }); %>
+                </ul>
+            <% } %>
+        </section>
+        <form class="form" action="/usuario/salvar" method="post">
+            <input type="text" name="email" placeholder="Digite o seu email" value="<%= typeof user !== 'undefined' ? user.email : '' %>">
+            
+            <input type="password" name="password" placeholder="Digite a sua senha"> 
+            
+            <input type="password" name="confirmpassword" placeholder="Confirme a sua senha"> 
+            
+            <button type="submit" value="enviar">Enviar</button>
+        </form>
+    </div>
 </body>
-
 </html>
